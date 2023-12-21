@@ -16,7 +16,7 @@ class VehicleDetailsController extends Controller
 
     public function index()
     {
-        return view('vehicle/vehicle_search');
+        return view('vehicles/vehicle_search');
     }
 
     public function getVehicleData(Request $request)
@@ -31,11 +31,16 @@ class VehicleDetailsController extends Controller
 
         $response = $this->soapWrapper->call('VehicleService.GetVehicleData', [['vin' => $vin]]);
 
+        // Zet de response om naar een PHP-object als het een JSON-string is
+        $vehicleData = json_decode(json_encode($response), false);
+        // Dump de response om de structuur te controleren
+        //dd($response); // Dit zal de uitvoering onderbreken en de response tonen
+
+
         // Log de response om de structuur te controleren
         logger()->info('SOAP Response:', (array) $response);        
 
-        return view('vehicle/vehicle_details', ['vehicle' => $response]);
-
+        return view('vehicles/vehicle_details', ['vehicle' => $vehicleData]);
 
     }
 
