@@ -3,6 +3,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserPreferenceController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\VehicleDetailsController;
 use App\Http\Controllers\VehicleInfoController;
 
 
@@ -81,9 +82,6 @@ Route::post('/user-preferences/{userId}', [UserPreferenceController::class, 'upd
 
 Route::get('/test-user-preferences', [UserPreferenceController::class, 'test']);
 
+Route::get('/vehicle', [VehicleDetailsController::class, 'index']);
 
-Route::get('/vehicle', function () {
-    return view('vehicle/vehicle');
-});
-
-Route::get('/vehicle/{vin}', [VehicleInfoController::class, 'getVehicleInfo']);
+Route::post('/vehicle', [VehicleDetailsController::class, 'getVehicleData']);

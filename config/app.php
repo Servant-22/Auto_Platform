@@ -168,8 +168,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\SoapServiceProvider::class,
-        Artisaninweb\SoapWrapper\ServiceProvider::class,
+        // App\Providers\SoapServiceProvider::class,
+        // Artisaninweb\SoapWrapper\ServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -185,7 +185,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'SoapWrapper' => Artisaninweb\SoapWrapper\Facades\SoapWrapper::class,
+        // 'SoapWrapper' => Artisaninweb\SoapWrapper\Facades\SoapWrapper::class,
 
     ])->toArray(),
 

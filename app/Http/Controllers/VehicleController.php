@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Http;
 
 class VehicleController extends Controller
 {
-    protected $soapVehicleService;
+    // protected $soapVehicleService;
 
-    public function __construct(VehicleInfoService $soapVehicleService)
-    {
-        $this->soapVehicleService = $soapVehicleService;
-    }
+    // public function __construct(VehicleInfoService $soapVehicleService)
+    // {
+    //     $this->soapVehicleService = $soapVehicleService;
+    // }
 
     public function index()
     {
