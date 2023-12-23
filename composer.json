@@ -10,7 +10,9 @@
         "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "spiral/roadrunner": "^2023.3",
+        "spiral/roadrunner-grpc": "^3.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
