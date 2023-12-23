@@ -5,6 +5,8 @@ use App\Http\Controllers\UserPreferenceController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\VehicleDetailsController;
 use App\Http\Controllers\VehicleInfoController;
+use App\Http\Controllers\MaintenanceScheduleController;
+
 
 
 
@@ -85,3 +87,7 @@ Route::get('/test-user-preferences', [UserPreferenceController::class, 'test']);
 Route::get('/vehicle', [VehicleDetailsController::class, 'index']);
 
 Route::post('/vehicle', [VehicleDetailsController::class, 'getVehicleData']);
+
+//grpc
+Route::get('/grpc/schedule', [MaintenanceScheduleController::class, 'create']);
+Route::post('/grpc/schedule', [MaintenanceScheduleController::class, 'schedule']);
