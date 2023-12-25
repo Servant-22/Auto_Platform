@@ -6,6 +6,7 @@ use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\VehicleDetailsController;
 use App\Http\Controllers\VehicleInfoController;
 use App\Http\Controllers\MaintenanceScheduleController;
+use App\Http\Controllers\MaintenanceTaskController;
 
 
 
