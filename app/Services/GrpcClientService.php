@@ -3,11 +3,9 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
-use app\Generated\Maintenance\MaintenanceServiceClient;
-use app\Generated\Maintenance\AppointmentRequest;
+use App\Generated\Maintenance\MaintenanceServiceClient;
+use App\Generated\Maintenance\AppointmentRequest;
 use Spiral\RoadRunner\GRPC;
-
-
 
 class GrpcClientService
 {
