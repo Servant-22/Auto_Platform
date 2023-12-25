@@ -92,3 +92,7 @@ Route::post('/vehicle', [VehicleDetailsController::class, 'getVehicleData']);
 //grpc
 Route::get('/grpc/schedule', [MaintenanceScheduleController::class, 'create']);
 Route::post('/grpc/schedule', [MaintenanceScheduleController::class, 'schedule']);
+
+Route::get('/phpinfo', function () {
+    return phpinfo();
+});

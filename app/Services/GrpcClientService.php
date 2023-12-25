@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
-use App\Generated\Maintenance\MaintenanceServiceClient;
 use App\Generated\Maintenance\AppointmentRequest;
-use Spiral\RoadRunner\GRPC;
+use App\Generated\Maintenance\MaintenanceServiceClient;
+use Illuminate\Support\Facades\Http;
+
 
 class GrpcClientService
 {
@@ -17,7 +17,7 @@ class GrpcClientService
     {
         //$this->baseUrl = 'http://localhost:50051'; // Pas dit aan naar de URL van je Go gRPC-service
         $this->client = new MaintenanceServiceClient('localhost:50051', [
-            'credentials' => GRPC\ChannelCredentials::createInsecure(),
+            'credentials' => Grpc\ChannelCredentials::createInsecure(),
         ]);
     }
 
@@ -39,7 +39,7 @@ class GrpcClientService
         $request->setPreferredTime($preferredTime);
 
         list($response, $status) = $this->client->ScheduleAppointment($request)->wait();
-        if ($status->code !== GRPC\STATUS_OK) {
+        if ($status->code !== Grpc\STATUS_OK) {
             throw new \Exception("gRPC request failed: " . $status->details);
         }
 
