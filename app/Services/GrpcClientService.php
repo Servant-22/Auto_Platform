@@ -1,26 +1,23 @@
 <?php
-
 namespace App\Services;
 
-use App\Generated\Maintenance\AppointmentRequest;
 use App\Generated\Maintenance\MaintenanceServiceClient;
+use App\Generated\Maintenance\AppointmentRequest;
+use Grpc\ChannelCredentials;
 use Illuminate\Support\Facades\Http;
-
 
 class GrpcClientService
 {
-    protected $baseUrl;
-    protected $client;
-
+    private $baseUrl;
+    private $client;
 
     public function __construct()
     {
-        //$this->baseUrl = 'http://localhost:50051'; // Pas dit aan naar de URL van je Go gRPC-service
+        // $this->baseUrl = 'http://localhost:50051';
         $this->client = new MaintenanceServiceClient('localhost:50051', [
-            'credentials' => Grpc\ChannelCredentials::createInsecure(),
+            'credentials' => ChannelCredentials::createInsecure(),
         ]);
     }
-
     // public function scheduleAppointment($userId, $taskDescription, $preferredTime)
     // {
     //     $response = Http::post("{$this->baseUrl}/schedule-appointment", [
@@ -31,6 +28,7 @@ class GrpcClientService
 
     //     return $response->json();
     // }
+
     public function scheduleAppointment($userId, $taskDescription, $preferredTime)
     {
         $request = new AppointmentRequest();
@@ -44,5 +42,10 @@ class GrpcClientService
         }
 
         return $response;
+    }
+
+    public function __destruct()
+    {
+        $this->client->close();
     }
 }

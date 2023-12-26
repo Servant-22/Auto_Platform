@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.8",
         "spiral/roadrunner": "^2023.3",
         "spiral/roadrunner-grpc": "^3.2",
-        "grpc/grpc": "1.57.0"
+        "grpc/grpc": "dev-master"
+
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -28,7 +29,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "App\\Generated\\": "app/Generated/"
         }
     },
     "autoload-dev": {
@@ -65,6 +67,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

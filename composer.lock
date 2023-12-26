@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13201f2cd248bfa0ed64724eb17acc46",
+    "content-hash": "f97405e528196c43c7d3af088597fb85",
     "packages": [
         {
             "name": "artisaninweb/laravel-soap",
@@ -789,7 +789,7 @@
         },
         {
             "name": "grpc/grpc",
-            "version": "1.57.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/grpc/grpc-php.git",
@@ -811,6 +811,7 @@
                 "ext-protobuf": "For better performance, install the protobuf C extension.",
                 "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -8648,8 +8649,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "grpc/grpc": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
