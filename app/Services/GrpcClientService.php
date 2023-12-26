@@ -18,16 +18,6 @@ class GrpcClientService
             'credentials' => ChannelCredentials::createInsecure(),
         ]);
     }
-    // public function scheduleAppointment($userId, $taskDescription, $preferredTime)
-    // {
-    //     $response = Http::post("{$this->baseUrl}/schedule-appointment", [
-    //         'user_id' => $userId,
-    //         'task_description' => $taskDescription,
-    //         'preferred_time' => $preferredTime,
-    //     ]);
-
-    //     return $response->json();
-    // }
 
     public function scheduleAppointment($userId, $taskDescription, $preferredTime)
     {
@@ -38,7 +28,7 @@ class GrpcClientService
 
         list($response, $status) = $this->client->ScheduleAppointment($request)->wait();
         if ($status->code !== \Grpc\STATUS_OK) {
-            throw new \Exception("gRPC request failed: " . $status->details);
+            throw new \Exception("gRPC request failed: " . $status->code);
         }
 
         return $response;
@@ -48,4 +38,15 @@ class GrpcClientService
     {
         $this->client->close();
     }
+
+       // public function scheduleAppointment($userId, $taskDescription, $preferredTime)
+    // {
+    //     $response = Http::post("{$this->baseUrl}/schedule-appointment", [
+    //         'user_id' => $userId,
+    //         'task_description' => $taskDescription,
+    //         'preferred_time' => $preferredTime,
+    //     ]);
+
+    //     return $response->json();
+    // }
 }
