@@ -1,8 +1,8 @@
 <?php
 namespace App\Services;
 
-use App\Generated\Maintenance\MaintenanceServiceClient;
-use App\Generated\Maintenance\AppointmentRequest;
+use Maintenance\MaintenanceServiceClient;
+use Maintenance\AppointmentRequest;
 use Grpc\ChannelCredentials;
 use Illuminate\Support\Facades\Http;
 
@@ -37,7 +37,7 @@ class GrpcClientService
         $request->setPreferredTime($preferredTime);
 
         list($response, $status) = $this->client->ScheduleAppointment($request)->wait();
-        if ($status->code !== Grpc\STATUS_OK) {
+        if ($status->code !== \Grpc\STATUS_OK) {
             throw new \Exception("gRPC request failed: " . $status->details);
         }
 
