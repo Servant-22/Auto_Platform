@@ -14,6 +14,7 @@ class GrpcClientService
     public function __construct()
     {
         // $this->baseUrl = 'http://localhost:50051';
+        
         $this->client = new MaintenanceServiceClient('localhost:50051', [
             'credentials' => ChannelCredentials::createInsecure(),
         ]);
@@ -30,14 +31,15 @@ class GrpcClientService
         if ($status->code !== \Grpc\STATUS_OK) {
             throw new \Exception("gRPC request failed: " . $status->code);
         }
+        dd($response);
 
         return $response;
     }
 
-    public function __destruct()
-    {
-        $this->client->close();
-    }
+    // public function __destruct()
+    // {
+    //     $this->client->close();
+    // }
 
        // public function scheduleAppointment($userId, $taskDescription, $preferredTime)
     // {

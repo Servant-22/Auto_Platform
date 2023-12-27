@@ -3,6 +3,13 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
+// Toon alle PHP configuratiegegevens
+phpinfo();
+
+// Laravel opstartcode hieronder...
+// (De rest van uw huidige code blijft ongewijzigd)
+
+
 define('LARAVEL_START', microtime(true));
 
 /*
