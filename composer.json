@@ -5,7 +5,7 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.2.4",
         "artisaninweb/laravel-soap": "0.3.0.10",
         "grpc/grpc": "^1.57",
         "guzzlehttp/guzzle": "^7.8",

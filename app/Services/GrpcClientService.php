@@ -1,23 +1,25 @@
 <?php
 namespace App\Services;
 
+use Grpc\ChannelCredentials;
 use Maintenance\MaintenanceServiceClient;
 use Maintenance\AppointmentRequest;
-use Grpc\ChannelCredentials;
+use Spiral\GRPC\Context;
 use Illuminate\Support\Facades\Http;
 
 class GrpcClientService
 {
     private $baseUrl;
-    private $client;
+    protected $client;
 
     public function __construct()
     {
         // $this->baseUrl = 'http://localhost:50051';
         
         $this->client = new MaintenanceServiceClient('localhost:50051', [
-            'credentials' => ChannelCredentials::createInsecure(),
+            'credentials' => \Grpc\ChannelCredentials::createInsecure(),
         ]);
+        
     }
 
     public function scheduleAppointment($userId, $taskDescription, $preferredTime)
