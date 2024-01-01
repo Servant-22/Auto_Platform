@@ -7,6 +7,8 @@ use App\Http\Controllers\VehicleDetailsController;
 use App\Http\Controllers\VehicleInfoController;
 use App\Http\Controllers\MaintenanceScheduleController;
 use App\Http\Controllers\MaintenanceTaskController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\FeedbackController;
 
 
 
@@ -89,10 +91,13 @@ Route::get('/vehicle', [VehicleDetailsController::class, 'index']);
 
 Route::post('/vehicle', [VehicleDetailsController::class, 'getVehicleData']);
 
-//grpc
-Route::get('/grpc/schedule', [MaintenanceScheduleController::class, 'create']);
-Route::post('/grpc/schedule', [MaintenanceScheduleController::class, 'schedule']);
+// Voeg een nieuwe route toe voor het inplannen van onderhoud
 
-Route::get('/phpinfo', function () {
-    return phpinfo();
-});
+Route::get('/grpc/schedule', [MaintenanceScheduleController::class, 'create']);
+Route::post('/grpc/schedule', [MaintenanceScheduleController::class, 'scheduleAppointment']);
+
+Route::post('/schedule-appointment', [MaintenanceScheduleController::class, 'scheduleAppointment']);
+
+Route::get('/send-email', [EmailController::class, 'showEmailForm']);
+Route::post('/send-email', [EmailController::class, 'sendEmail'])->name('send-email');
+Route::get('/feedback/{email}', [FeedbackController::class, 'processFeedback']);

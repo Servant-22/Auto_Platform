@@ -19,24 +19,29 @@ class MaintenanceScheduleController extends Controller
         return view('grpc.schedule');
     }
 
-    public function schedule(Request $request)
+    public function scheduleAppointment(Request $request)
     {
-        $validatedData = $request->validate([
-            'user_id' => 'required',
-            'task_description' => 'required',
-            'preferred_time' => 'required',
-        ]);
-
-        //try{
+        try {
             $response = $this->grpcClientService->scheduleAppointment(
-                $validatedData['user_id'],
-                $validatedData['task_description'],
-                $validatedData['preferred_time']
+                $request->input('userId'),
+                $request->input('taskDescription'),
+                $request->input('preferredTime')
             );
-            dd($response);
+    
+            // // Voorbereiden van variabelen voor de view
+            // $appointmentDetails = [
+            //     'confirmationId' => $response->getConfirmationId(),
+            //     'scheduledTime' => $response->getScheduledTime(),
+            //     // Andere relevante details...
+            // ];
+    
+            // return view('grpc.scheduled', compact('appointmentDetails'));
             return view('grpc.scheduled', ['response' => $response]);
-        //} catch (\Exception $e) {
-       //     return back()->withErrors(['error' => $e->getMessage()]);
-       // }  
+    
+        } catch (\Exception $e) {
+            // Hier kan je kiezen om een foutmelding te tonen in een view, of een foutpagina.
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
+    
 }
