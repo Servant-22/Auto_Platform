@@ -1,0 +1,19 @@
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px; /* Aanpasbaar naar wens */
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center; /* Centreert de tekst */
+}
+
+.card h1 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #555;
+}
