@@ -10,7 +10,15 @@ class FeedbackController extends Controller
     public function processFeedback(Request $request, $email)
     {
         // Haal de feedbackscore op van de URL-queryparameter
-        $score = $request->query('score');
+        // $score = $request->query('score');
+
+        // Valideer de binnenkomende verzoekdata
+        $validatedData = $request->validate([
+            'score' => 'required|integer',
+        ]);
+
+        // Haal de gevalideerde feedbackscore op
+        $score = $validatedData['score'];
 
         // Voeg de nieuwe feedbackscore toe aan de database
         $feedback = Feedback::updateOrCreate(
@@ -25,7 +33,7 @@ class FeedbackController extends Controller
         // bijvoorbeeld in een andere database tabel of in cache
 
         // Stuur de gebruiker door naar een bedankpagina of geef een response terug
-        return view('feedback_thankyou', ['averageScore' => $averageScore]);
+        return view('feedback_thank_you', ['averageScore' => $averageScore]);
     }
 }
 

@@ -94,4 +94,8 @@ Route::post('/schedule-appointment', [MaintenanceScheduleController::class, 'sch
 //python service - websocket
 Route::get('/send-email', [EmailController::class, 'showEmailForm']);
 Route::post('/send-email', [EmailController::class, 'sendEmail'])->name('send-email');
-Route::get('/feedback/{email}', [FeedbackController::class, 'processFeedback']);
+// Route::get('/feedback/{email}', [FeedbackController::class, 'processFeedback']);
+Route::post('/feedback/{email}', [FeedbackController::class, 'processFeedback']);
+Route::get('/feedback/{email}', function ($email) {
+    return view('feedback', ['email' => $email]);
+});
