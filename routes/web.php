@@ -56,48 +56,42 @@ Route::get('/db-test', function () {
 });
 
 
+
+//Pyton, Ruby Service - MQTT, REST
 // Displaying the form might be handled by another method, like an 'index' or 'create' method.
 Route::get('/maintenance', [VehicleController::class, 'index'])->name('maintenance.index');
 
 // The form submission is handled here.
 Route::post('/maintenance', [VehicleController::class, 'store'])->name('maintenance.store');
 
-
 Route::get('/vehicles/{id}/edit', [VehicleController::class, 'edit'])->name('maintenance.edit');
 Route::put('/vehicles/{id}', [VehicleController::class, 'update'])->name('maintenance.update');
 Route::delete('/vehicles/{id}', [VehicleController::class, 'destroy'])->name('maintenance.destroy');
 
-
 // Vehicle routes
 Route::post('/vehicles', [VehicleController::class, 'store']);
 Route::get('/vehicles/{id}', [VehicleController::class, 'show']);
-
-// Route voor het ophalen van voertuigdetails van de Java SOAP-service
-// Route::get('/api/get-vehicle-details/{id}', [VehicleController::class, 'getVehicleDetails']);
-
 
 // Maintenance Task routes
 Route::post('/maintenance_tasks', [MaintenanceTaskController::class, 'create']);
 Route::put('/maintenance_tasks/{id}', [MaintenanceTaskController::class, 'update']);
 
  
-// User Preferences routes
+//Javascrip node.js service - graphql
 Route::get('/user-preferences/{userId}', [UserPreferenceController::class, 'getUserPreferences']);
 Route::post('/user-preferences/{userId}', [UserPreferenceController::class, 'updateUserPreferences']);
-
 Route::get('/test-user-preferences', [UserPreferenceController::class, 'test']);
 
+//c# service - SOAP
 Route::get('/vehicle', [VehicleDetailsController::class, 'index']);
-
 Route::post('/vehicle', [VehicleDetailsController::class, 'getVehicleData']);
 
-// Voeg een nieuwe route toe voor het inplannen van onderhoud
-
+//go service - grpc/rest
 Route::get('/grpc/schedule', [MaintenanceScheduleController::class, 'create']);
 Route::post('/grpc/schedule', [MaintenanceScheduleController::class, 'scheduleAppointment']);
-
 Route::post('/schedule-appointment', [MaintenanceScheduleController::class, 'scheduleAppointment']);
 
+//python service - websocket
 Route::get('/send-email', [EmailController::class, 'showEmailForm']);
 Route::post('/send-email', [EmailController::class, 'sendEmail'])->name('send-email');
 Route::get('/feedback/{email}', [FeedbackController::class, 'processFeedback']);

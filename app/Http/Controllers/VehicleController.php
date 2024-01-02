@@ -4,27 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-use App\Models\Vehicle; // Voeg dit toe bovenaan je controller
-use App\Services\SoapVehicleService; // Voeg dit toe
+use App\Models\Vehicle;
+use App\Services\SoapVehicleService;
 use App\Services\VehicleInfoService;
 use Illuminate\Support\Facades\Http;
 
 
 class VehicleController extends Controller
 {
-    // protected $soapVehicleService;
-
-    // public function __construct(VehicleInfoService $soapVehicleService)
-    // {
-    //     $this->soapVehicleService = $soapVehicleService;
-    // }
-
     public function index()
     {
         $vehicles = Vehicle::all();
         return view('maintenance', ['vehicles' => $vehicles]);
-        // If you need to pass data to your view, you would query your database here.
-        // return view('maintenance'); // This should be the name of your Blade template file.
     }
 
     public function store(Request $request)
@@ -61,31 +52,7 @@ class VehicleController extends Controller
         } else {
             return back()->withErrors('Failed to add vehicle to Python service.');
         }
-
-        // $vehicle = $this->soapVehicleService->getVehicleInformation($id);
-        // return view('vehicle.show', compact('vehicle'));
     }
-
-    // public function getVehicleDetails($id)
-    // {
-    //     try {
-    //         // Ophalen van voertuigdetails via de SOAP-service
-    //         $vehicleDetails = $this->soapVehicleService->getVehicleDetails($id);
-    
-    //         // Controleer of de response geldige gegevens bevat
-    //         if ($vehicleDetails) {
-    //             // Retourneer de voertuigdetails als JSON
-    //             return response()->json(['success' => true, 'details' => $vehicleDetails]);
-    //         } else {
-    //             // Geen gegevens gevonden
-    //             return response()->json(['success' => false, 'message' => 'No vehicle details found for the provided ID.']);
-    //         }
-    //     } catch (\Exception $e) {
-    //         // Foutafhandeling
-    //         return response()->json(['success' => false, 'error' => 'Failed to retrieve vehicle details: ' . $e->getMessage()], 500);
-    //     }
-    // }
-    
 
     //ruby
     public function show($id)

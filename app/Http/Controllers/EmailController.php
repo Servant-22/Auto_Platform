@@ -15,7 +15,7 @@ class EmailController extends Controller
 
     public function showEmailForm()
     {
-        return view('send_email_form');  // Een Blade-template met uw e-mailformulier
+        return view('send_email_form');  //e-mailformulier
     }
 
     public function sendEmail(Request $request)

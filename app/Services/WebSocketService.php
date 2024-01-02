@@ -10,7 +10,7 @@ class WebSocketService
 
     public function __construct()
     {
-        $this->webSocketClient = new Client('ws://localhost:6000/ws/reminder/');
+        $this->webSocketClient = new Client('ws://localhost:6005/ws/reminder/');
     }
 
     public function sendEmail($email, $message)
